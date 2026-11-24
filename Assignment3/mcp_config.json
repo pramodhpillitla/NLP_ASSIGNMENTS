@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "enterprise-assistant": {
+      "command": "python",
+      "args": [
+        "d:\\NLP_ASSIGNMENT\\C4_B210195\\Assignment3\\mcp_server.py"
+      ],
+      "env": {
+        "ASSISTANT_ENV": "production",
+        "LOG_LEVEL": "INFO"
+      }
+    }
+  }
+}

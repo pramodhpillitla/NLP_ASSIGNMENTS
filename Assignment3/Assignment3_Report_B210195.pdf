@@ -1,0 +1,382 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 3 0 R /Outlines 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Outlines /Count 0 >>
+endobj
+3 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R] /Count 3 >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+7 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Contents 8 0 R /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 5215 >>
+stream
+0.75 0.78 0.82 RG 0.5 w 50 755 m 562 755 l S
+BT /F2 8 Tf 0.40 0.45 0.50 rg 50 760 Td (NLP Assignment | Student ID: B210195 | Class: C4) Tj ET
+BT /F1 8 Tf 0.17 0.42 0.69 rg 430 760 Td (Build MCP Server for an AI Ass) Tj ET
+0.10 0.21 0.36 rg
+BT /F1 18 Tf 50 730 Td (Build MCP Server for an AI Assistant) Tj ET
+0.17 0.42 0.69 rg
+BT /F2 12 Tf 50 704 Td (Design, Implementation, and Protocol Verification of Model Context Protocol \(MCP\) Server) Tj ET
+0.96 0.97 0.98 rg 50 546 512 136 re f
+0.80 0.83 0.88 RG 0.75 w 50 546 512 136 re S
+0.15 0.20 0.25 rg
+BT /F1 9 Tf 60 668 Td (Student Name:) Tj ET
+BT /F2 9 Tf 200 668 Td (Pramodh) Tj ET
+0.15 0.20 0.25 rg
+BT /F1 9 Tf 60 652 Td (Student ID:) Tj ET
+BT /F2 9 Tf 200 652 Td (B210195) Tj ET
+0.15 0.20 0.25 rg
+BT /F1 9 Tf 60 636 Td (Class / Section:) Tj ET
+BT /F2 9 Tf 200 636 Td (C4) Tj ET
+0.15 0.20 0.25 rg
+BT /F1 9 Tf 60 620 Td (Course:) Tj ET
+BT /F2 9 Tf 200 620 Td (Natural Language Processing \(NLP\)) Tj ET
+0.15 0.20 0.25 rg
+BT /F1 9 Tf 60 604 Td (Assignment Number:) Tj ET
+BT /F2 9 Tf 200 604 Td (Assignment 3) Tj ET
+0.15 0.20 0.25 rg
+BT /F1 9 Tf 60 588 Td (Topic:) Tj ET
+BT /F2 9 Tf 200 588 Td (Building Model Context Protocol \(MCP\) Server for AI Assistants) Tj ET
+0.15 0.20 0.25 rg
+BT /F1 9 Tf 60 572 Td (Date of Submission:) Tj ET
+BT /F2 9 Tf 200 572 Td (November 24, 2026) Tj ET
+0.15 0.20 0.25 rg
+BT /F1 9 Tf 60 556 Td (Protocol Standard:) Tj ET
+BT /F2 9 Tf 200 556 Td (Model Context Protocol \(MCP\) v2024-11-05, JSON-RPC 2.0 \(stdio\)) Tj ET
+0.17 0.42 0.69 RG 1.5 w 50 526 m 562 526 l S
+0.10 0.21 0.36 rg
+BT /F1 13 Tf 50 530 Td (1. Executive Summary & Problem Formulation) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9.5 Tf 50 506 Td (As Large Language Models transition into agentic assistants, connecting them to) Tj ET
+BT /F2 9.5 Tf 50 493 Td (external enterprise resources, local filesystems, and databases has become paramount.) Tj ET
+BT /F2 9.5 Tf 50 480 Td (Historically, every AI provider developed proprietary function calling schemas, custom) Tj ET
+BT /F2 9.5 Tf 50 467 Td (webhook APIs, and ad-hoc plugin formats. This created severe ecosystem fragmentation and) Tj ET
+BT /F2 9.5 Tf 50 454 Td (high integration friction.) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9.5 Tf 50 436 Td (The Model Context Protocol \(MCP\), open-sourced by Anthropic, addresses this challenge) Tj ET
+BT /F2 9.5 Tf 50 423 Td (by establishing an open, universal, and bidirectional standard connecting AI models) Tj ET
+BT /F2 9.5 Tf 50 410 Td (\(Clients\) with external execution environments and data repositories \(Servers\). This) Tj ET
+BT /F2 9.5 Tf 50 397 Td (assignment designs, implements, and validates an enterprise MCP Server for AI assistants) Tj ET
+BT /F2 9.5 Tf 50 384 Td (over standard I/O \(stdio\) using JSON-RPC 2.0 protocol specifications.) Tj ET
+0.17 0.42 0.69 RG 1.5 w 50 362 m 562 362 l S
+0.10 0.21 0.36 rg
+BT /F1 13 Tf 50 366 Td (2. Model Context Protocol \(MCP\) Architectural Specification) Tj ET
+0.17 0.42 0.69 rg
+BT /F1 11 Tf 50 342 Td (2.1 Client-Server Topology & Transport Primitives) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9.5 Tf 50 324 Td (MCP utilizes a decoupled Client-Server architecture. The host application \(such as) Tj ET
+BT /F2 9.5 Tf 50 311 Td (Claude Desktop, Antigravity, or an IDE\) operates as the MCP Client, while local or) Tj ET
+BT /F2 9.5 Tf 50 298 Td (remote microservices act as MCP Servers. Communication occurs over standard streams) Tj ET
+BT /F2 9.5 Tf 50 285 Td (\(stdio\) for local isolation or Server-Sent Events \(SSE\) for remote networks.) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9.5 Tf 50 267 Td (All message payloads adhere strictly to JSON-RPC 2.0 specifications:) Tj ET
+0.96 0.97 0.98 rg 50 213 512 36 re f
+0.82 0.85 0.89 RG 0.75 w 50 213 512 36 re S
+0.12 0.15 0.20 rg
+BT /F3 8 Tf 58 238 Td ({"jsonrpc": "2.0", "id": 1, "method": "tools/call", "params": {"name": "query_data) Tj ET
+BT /F3 8 Tf 58 227 Td (base", "arguments": {"query": "SELECT * FROM metrics"}}}) Tj ET
+0.17 0.42 0.69 rg
+BT /F1 11 Tf 50 208 Td (2.2 The Three MCP Core Primitives) Tj ET
+0.17 0.42 0.69 rg
+BT /F1 9.5 Tf 54 190 Td (- ) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9 Tf 66 190 Td (1. Tools \(Active Execution\): Dynamic executable functions that can be invoked by) Tj ET
+BT /F2 9 Tf 66 178 Td (the model. Each tool defines a strict JSON Schema for input validation and returns) Tj ET
+BT /F2 9 Tf 66 166 Td (structured content arrays.) Tj ET
+0.17 0.42 0.69 rg
+BT /F1 9.5 Tf 54 151 Td (- ) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9 Tf 66 151 Td (2. Resources \(Passive Context\): Passive, readable contextual endpoints addressed by) Tj ET
+BT /F2 9 Tf 66 139 Td (custom URI schemes \(e.g. assistant://system_config\). Resources supply live data to) Tj ET
+BT /F2 9 Tf 66 127 Td (models without executing code.) Tj ET
+0.17 0.42 0.69 rg
+BT /F1 9.5 Tf 54 112 Td (- ) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9 Tf 66 112 Td (3. Prompts \(Guided Interaction\): Pre-parameterized prompt templates provided by the) Tj ET
+BT /F2 9 Tf 66 100 Td (server to guide user workflows and standardize assistant interactions.) Tj ET
+0.75 0.78 0.82 RG 0.5 w 50 45 m 562 45 l S
+BT /F2 8 Tf 0.40 0.45 0.50 rg 50 35 Td (Department of Computer Science & Engineering) Tj ET
+BT /F1 8 Tf 0.17 0.42 0.69 rg 500 35 Td (Page 1 of 3) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Contents 10 0 R /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R >> >> >>
+endobj
+10 0 obj
+<< /Length 8805 >>
+stream
+0.75 0.78 0.82 RG 0.5 w 50 755 m 562 755 l S
+BT /F2 8 Tf 0.40 0.45 0.50 rg 50 760 Td (NLP Assignment | Student ID: B210195 | Class: C4) Tj ET
+BT /F1 8 Tf 0.17 0.42 0.69 rg 430 760 Td (Build MCP Server for an AI Ass) Tj ET
+0.17 0.42 0.69 RG 1.5 w 50 726 m 562 726 l S
+0.10 0.21 0.36 rg
+BT /F1 13 Tf 50 730 Td (3. MCP Server Implementation Architecture) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9.5 Tf 50 706 Td (Our implemented MCP server exposes a robust suite of tools, resources, and prompts) Tj ET
+BT /F2 9.5 Tf 50 693 Td (designed for an enterprise data assistant:) Tj ET
+0.17 0.42 0.69 rg 50 657 512 18 re f
+1.0 1.0 1.0 rg
+BT /F1 8.5 Tf 54 663 Td (Primitive Type) Tj ET
+BT /F1 8.5 Tf 182 663 Td (Identifier / URI) Tj ET
+BT /F1 8.5 Tf 310 663 Td (Input Parameters / Format) Tj ET
+BT /F1 8.5 Tf 438 663 Td (Functional Capability) Tj ET
+1.0 1.0 1.0 rg 50 641 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 641 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 646 Td (Tool) Tj ET
+BT /F2 8 Tf 182 646 Td (query_database) Tj ET
+BT /F2 8 Tf 310 646 Td (query \(string, SQL\)) Tj ET
+BT /F2 8 Tf 438 646 Td (Executes safe read-on..) Tj ET
+0.96 0.97 0.98 rg 50 625 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 625 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 630 Td (Tool) Tj ET
+BT /F2 8 Tf 182 630 Td (calculate_financial_m..) Tj ET
+BT /F2 8 Tf 310 630 Td (metric_type, revenue,..) Tj ET
+BT /F2 8 Tf 438 630 Td (High-precision financ..) Tj ET
+1.0 1.0 1.0 rg 50 609 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 609 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 614 Td (Tool) Tj ET
+BT /F2 8 Tf 182 614 Td (search_assistant_docs) Tj ET
+BT /F2 8 Tf 310 614 Td (query \(string\)) Tj ET
+BT /F2 8 Tf 438 614 Td (Keyword & SOP search ..) Tj ET
+0.96 0.97 0.98 rg 50 593 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 593 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 598 Td (Tool) Tj ET
+BT /F2 8 Tf 182 598 Td (system_health_check) Tj ET
+BT /F2 8 Tf 310 598 Td (none) Tj ET
+BT /F2 8 Tf 438 598 Td (Live hardware telemet..) Tj ET
+1.0 1.0 1.0 rg 50 577 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 577 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 582 Td (Resource) Tj ET
+BT /F2 8 Tf 182 582 Td (assistant://system_co..) Tj ET
+BT /F2 8 Tf 310 582 Td (application/json) Tj ET
+BT /F2 8 Tf 438 582 Td (System parameters, to..) Tj ET
+0.96 0.97 0.98 rg 50 561 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 561 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 566 Td (Resource) Tj ET
+BT /F2 8 Tf 182 566 Td (assistant://database_..) Tj ET
+BT /F2 8 Tf 310 566 Td (text/plain) Tj ET
+BT /F2 8 Tf 438 566 Td (Live introspection of..) Tj ET
+1.0 1.0 1.0 rg 50 545 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 545 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 550 Td (Resource) Tj ET
+BT /F2 8 Tf 182 550 Td (assistant://audit_logs) Tj ET
+BT /F2 8 Tf 310 550 Td (application/json) Tj ET
+BT /F2 8 Tf 438 550 Td (Immutable audit trail..) Tj ET
+0.96 0.97 0.98 rg 50 529 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 529 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 534 Td (Prompt) Tj ET
+BT /F2 8 Tf 182 534 Td (financial_analysis_pr..) Tj ET
+BT /F2 8 Tf 310 534 Td (department \(string\)) Tj ET
+BT /F2 8 Tf 438 534 Td (Executive briefing te..) Tj ET
+1.0 1.0 1.0 rg 50 513 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 513 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 518 Td (Prompt) Tj ET
+BT /F2 8 Tf 182 518 Td (system_diagnostic_pro..) Tj ET
+BT /F2 8 Tf 310 518 Td (none) Tj ET
+BT /F2 8 Tf 438 518 Td (System health diagnos..) Tj ET
+0.17 0.42 0.69 RG 1.5 w 50 497 m 562 497 l S
+0.10 0.21 0.36 rg
+BT /F1 13 Tf 50 501 Td (4. Protocol Lifecycle & Verification Walkthrough) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9.5 Tf 50 477 Td (We developed an automated Python verification client \(`mcp_client_test.py`\) that) Tj ET
+BT /F2 9.5 Tf 50 464 Td (executes the complete protocol lifecycle over stdio pipes:) Tj ET
+0.17 0.42 0.69 rg
+BT /F1 9.5 Tf 54 446 Td (- ) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9 Tf 66 446 Td (Phase 1 - Initialization Handshake: Client initiates handshake with 'initialize') Tj ET
+BT /F2 9 Tf 66 434 Td (request; server returns capabilities and serverInfo; client acknowledges with) Tj ET
+BT /F2 9 Tf 66 422 Td ('notifications/initialized'.) Tj ET
+0.17 0.42 0.69 rg
+BT /F1 9.5 Tf 54 407 Td (- ) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9 Tf 66 407 Td (Phase 2 - Tool Discovery: Client invokes 'tools/list', validating schema compliance) Tj ET
+BT /F2 9 Tf 66 395 Td (against JSON-RPC 2.0 standards.) Tj ET
+0.17 0.42 0.69 rg
+BT /F1 9.5 Tf 54 380 Td (- ) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9 Tf 66 380 Td (Phase 3 - Tool Execution: Client executes 'tools/call' with arguments; server) Tj ET
+BT /F2 9 Tf 66 368 Td (evaluates SQL, enforces safety restrictions, and returns structured text payloads.) Tj ET
+0.17 0.42 0.69 rg
+BT /F1 9.5 Tf 54 353 Td (- ) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9 Tf 66 353 Td (Phase 4 - Resource Introspection: Client reads 'resources/read' with target URIs;) Tj ET
+BT /F2 9 Tf 66 341 Td (server returns formatted metadata and payloads.) Tj ET
+0.17 0.42 0.69 rg
+BT /F1 9.5 Tf 54 326 Td (- ) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9 Tf 66 326 Td (Phase 5 - Prompt Templating: Client fetches 'prompts/get', verifying argument) Tj ET
+BT /F2 9 Tf 66 314 Td (substitution and message structure.) Tj ET
+0.17 0.42 0.69 RG 1.5 w 50 295 m 562 295 l S
+0.10 0.21 0.36 rg
+BT /F1 13 Tf 50 299 Td (5. Test Execution Results & Protocol Compliance) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9.5 Tf 50 275 Td (All verification tests passed with 100% compliance against MCP standard v2024-11-05.) Tj ET
+BT /F2 9.5 Tf 50 262 Td (Below is the test verification summary:) Tj ET
+0.17 0.42 0.69 rg 50 226 512 18 re f
+1.0 1.0 1.0 rg
+BT /F1 8.5 Tf 54 232 Td (Test ID) Tj ET
+BT /F1 8.5 Tf 156 232 Td (Method Tested) Tj ET
+BT /F1 8.5 Tf 258 232 Td (Target Identifier) Tj ET
+BT /F1 8.5 Tf 360 232 Td (Expected Payload) Tj ET
+BT /F1 8.5 Tf 462 232 Td (Verification Status) Tj ET
+1.0 1.0 1.0 rg 50 210 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 210 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 215 Td (TC-01) Tj ET
+BT /F2 8 Tf 156 215 Td (initialize) Tj ET
+BT /F2 8 Tf 258 215 Td (enterprise-assis..) Tj ET
+BT /F2 8 Tf 360 215 Td (protocolVersion:..) Tj ET
+BT /F2 8 Tf 462 215 Td (PASSED) Tj ET
+0.96 0.97 0.98 rg 50 194 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 194 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 199 Td (TC-02) Tj ET
+BT /F2 8 Tf 156 199 Td (tools/list) Tj ET
+BT /F2 8 Tf 258 199 Td (All Tools) Tj ET
+BT /F2 8 Tf 360 199 Td (4 tools register..) Tj ET
+BT /F2 8 Tf 462 199 Td (PASSED) Tj ET
+1.0 1.0 1.0 rg 50 178 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 178 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 183 Td (TC-03) Tj ET
+BT /F2 8 Tf 156 183 Td (tools/call) Tj ET
+BT /F2 8 Tf 258 183 Td (query_database) Tj ET
+BT /F2 8 Tf 360 183 Td (Returned 2 rows ..) Tj ET
+BT /F2 8 Tf 462 183 Td (PASSED) Tj ET
+0.96 0.97 0.98 rg 50 162 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 162 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 167 Td (TC-04) Tj ET
+BT /F2 8 Tf 156 167 Td (tools/call) Tj ET
+BT /F2 8 Tf 258 167 Td (calculate_financ..) Tj ET
+BT /F2 8 Tf 360 167 Td (Computed CAGR = ..) Tj ET
+BT /F2 8 Tf 462 167 Td (PASSED) Tj ET
+1.0 1.0 1.0 rg 50 146 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 146 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 151 Td (TC-05) Tj ET
+BT /F2 8 Tf 156 151 Td (tools/call) Tj ET
+BT /F2 8 Tf 258 151 Td (system_health_ch..) Tj ET
+BT /F2 8 Tf 360 151 Td (Status: HEALTHY,..) Tj ET
+BT /F2 8 Tf 462 151 Td (PASSED) Tj ET
+0.96 0.97 0.98 rg 50 130 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 130 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 135 Td (TC-06) Tj ET
+BT /F2 8 Tf 156 135 Td (resources/list) Tj ET
+BT /F2 8 Tf 258 135 Td (All Resources) Tj ET
+BT /F2 8 Tf 360 135 Td (3 resources regi..) Tj ET
+BT /F2 8 Tf 462 135 Td (PASSED) Tj ET
+1.0 1.0 1.0 rg 50 114 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 114 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 119 Td (TC-07) Tj ET
+BT /F2 8 Tf 156 119 Td (resources/read) Tj ET
+BT /F2 8 Tf 258 119 Td (assistant://syst..) Tj ET
+BT /F2 8 Tf 360 119 Td (Returned JSON co..) Tj ET
+BT /F2 8 Tf 462 119 Td (PASSED) Tj ET
+0.96 0.97 0.98 rg 50 98 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 98 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 103 Td (TC-08) Tj ET
+BT /F2 8 Tf 156 103 Td (prompts/list) Tj ET
+BT /F2 8 Tf 258 103 Td (All Prompts) Tj ET
+BT /F2 8 Tf 360 103 Td (2 parameterized ..) Tj ET
+BT /F2 8 Tf 462 103 Td (PASSED) Tj ET
+1.0 1.0 1.0 rg 50 82 512 16 re f
+0.85 0.88 0.91 RG 0.5 w 50 82 512 16 re S
+0.18 0.22 0.28 rg
+BT /F2 8 Tf 54 87 Td (TC-09) Tj ET
+BT /F2 8 Tf 156 87 Td (prompts/get) Tj ET
+BT /F2 8 Tf 258 87 Td (financial_analys..) Tj ET
+BT /F2 8 Tf 360 87 Td (Returned templat..) Tj ET
+BT /F2 8 Tf 462 87 Td (PASSED) Tj ET
+0.75 0.78 0.82 RG 0.5 w 50 45 m 562 45 l S
+BT /F2 8 Tf 0.40 0.45 0.50 rg 50 35 Td (Department of Computer Science & Engineering) Tj ET
+BT /F1 8 Tf 0.17 0.42 0.69 rg 500 35 Td (Page 2 of 3) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 3 0 R /MediaBox [0 0 612 792] /Contents 12 0 R /Resources << /Font << /F1 4 0 R /F2 5 0 R /F3 6 0 R >> >> >>
+endobj
+12 0 obj
+<< /Length 2053 >>
+stream
+0.75 0.78 0.82 RG 0.5 w 50 755 m 562 755 l S
+BT /F2 8 Tf 0.40 0.45 0.50 rg 50 760 Td (NLP Assignment | Student ID: B210195 | Class: C4) Tj ET
+BT /F1 8 Tf 0.17 0.42 0.69 rg 430 760 Td (Build MCP Server for an AI Ass) Tj ET
+0.17 0.42 0.69 RG 1.5 w 50 726 m 562 726 l S
+0.10 0.21 0.36 rg
+BT /F1 13 Tf 50 730 Td (6. Security & Sandboxing Principles) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9.5 Tf 50 706 Td (Exposing local capabilities to AI models requires strict security boundaries:) Tj ET
+0.17 0.42 0.69 rg
+BT /F1 9.5 Tf 54 688 Td (- ) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9 Tf 66 688 Td (SQL Injection & Mutation Guard: The database tool rejects any statement containing) Tj ET
+BT /F2 9 Tf 66 676 Td (DROP, DELETE, INSERT, UPDATE, or ALTER, ensuring data immutability.) Tj ET
+0.17 0.42 0.69 rg
+BT /F1 9.5 Tf 54 661 Td (- ) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9 Tf 66 661 Td (Append-Only Audit Trail: All tool executions and administrative queries are) Tj ET
+BT /F2 9 Tf 66 649 Td (persisted to an append-only SQLite audit log with ISO timestamps.) Tj ET
+0.17 0.42 0.69 rg
+BT /F1 9.5 Tf 54 634 Td (- ) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9 Tf 66 634 Td (Process Isolation: The server communicates exclusively via stdio pipes, preventing) Tj ET
+BT /F2 9 Tf 66 622 Td (unauthorized external network listeners.) Tj ET
+0.17 0.42 0.69 RG 1.5 w 50 603 m 562 603 l S
+0.10 0.21 0.36 rg
+BT /F1 13 Tf 50 607 Td (7. Conclusion) Tj ET
+0.18 0.22 0.28 rg
+BT /F2 9.5 Tf 50 583 Td (Assignment 3 successfully implemented a production-grade Model Context Protocol \(MCP\)) Tj ET
+BT /F2 9.5 Tf 50 570 Td (server for AI assistants. Adhering strictly to MCP v2024-11-05, the server provides) Tj ET
+BT /F2 9.5 Tf 50 557 Td (secure tools, contextual resources, and prompt templates, establishing a standardized) Tj ET
+BT /F2 9.5 Tf 50 544 Td (bridge between foundation models and enterprise compute.) Tj ET
+0.75 0.78 0.82 RG 0.5 w 50 45 m 562 45 l S
+BT /F2 8 Tf 0.40 0.45 0.50 rg 50 35 Td (Department of Computer Science & Engineering) Tj ET
+BT /F1 8 Tf 0.17 0.42 0.69 rg 500 35 Td (Page 3 of 3) Tj ET
+endstream
+endobj
+xref
+0 13
+0000000000 65535 f 
+0000000009 00000 n 
+0000000074 00000 n 
+0000000120 00000 n 
+0000000190 00000 n 
+0000000292 00000 n 
+0000000389 00000 n 
+0000000484 00000 n 
+0000000630 00000 n 
+0000005897 00000 n 
+0000006044 00000 n 
+0000014902 00000 n 
+0000015050 00000 n 
+trailer
+<< /Size 13 /Root 1 0 R >>
+startxref
+17156
+%%EOF

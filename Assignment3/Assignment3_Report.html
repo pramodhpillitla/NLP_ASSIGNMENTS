@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build MCP Server for an AI Assistant - B210195</title>
+<style>
+  :root {
+    --primary: #1a365d;
+    --secondary: #2b6cb0;
+    --accent: #319795;
+    --text: #2d3748;
+    --bg-light: #f7fafc;
+    --border: #e2e8f0;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.65;
+    color: var(--text);
+    background-color: #f0f4f8;
+    margin: 0;
+    padding: 30px 15px;
+  }
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 50px 60px;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  }
+  .doc-title {
+    color: var(--primary);
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 6px;
+    border: none;
+  }
+  .doc-subtitle {
+    color: var(--secondary);
+    font-size: 1.25rem;
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 500;
+  }
+  .meta-card {
+    background: var(--bg-light);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+  }
+  .meta-card table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .meta-card td {
+    padding: 6px 12px;
+    font-size: 0.95rem;
+  }
+  .meta-label {
+    font-weight: 600;
+    color: var(--primary);
+    width: 30%;
+  }
+  .meta-val {
+    color: #1a202c;
+  }
+  h2 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    border-bottom: 2px solid var(--secondary);
+    padding-bottom: 6px;
+    margin-top: 35px;
+    margin-bottom: 14px;
+  }
+  h3 {
+    color: var(--secondary);
+    font-size: 1.25rem;
+    margin-top: 24px;
+    margin-bottom: 10px;
+  }
+  h4 {
+    color: var(--text);
+    font-size: 1.1rem;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+  p {
+    margin: 10px 0;
+    text-align: justify;
+    font-size: 1rem;
+  }
+  li {
+    margin: 6px 0;
+    margin-left: 20px;
+  }
+  .callout {
+    background: #ebf8ff;
+    border-left: 4px solid var(--secondary);
+    padding: 14px 18px;
+    margin: 18px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .callout-title {
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 4px;
+  }
+  pre {
+    background: #1a202c;
+    color: #f7fafc;
+    padding: 16px 20px;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-family: Consolas, Monaco, "Courier New", monospace;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin: 18px 0;
+  }
+  .table-container {
+    overflow-x: auto;
+    margin: 20px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  th, td {
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 0.92rem;
+  }
+  th {
+    background: var(--secondary);
+    color: #ffffff;
+    font-weight: 600;
+  }
+  tr:nth-child(even) td {
+    background-color: var(--bg-light);
+  }
+  @media print {
+    body {
+      background: #ffffff;
+      padding: 0;
+    }
+    .container {
+      box-shadow: none;
+      padding: 20px;
+      max-width: 100%;
+    }
+    pre {
+      background: #f7fafc;
+      color: #2d3748;
+      border: 1px solid #cbd5e0;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<h1 class="doc-title">Build MCP Server for an AI Assistant</h1><div class="doc-subtitle">Design, Implementation, and Protocol Verification of Model Context Protocol (MCP) Server</div><div class="meta-card"><table><tr><td class="meta-label">Student Name</td><td class="meta-val">Pramodh</td></tr><tr><td class="meta-label">Student ID</td><td class="meta-val">B210195</td></tr><tr><td class="meta-label">Class / Section</td><td class="meta-val">C4</td></tr><tr><td class="meta-label">Course</td><td class="meta-val">Natural Language Processing (NLP)</td></tr><tr><td class="meta-label">Assignment Number</td><td class="meta-val">Assignment 3</td></tr><tr><td class="meta-label">Topic</td><td class="meta-val">Building Model Context Protocol (MCP) Server for AI Assistants</td></tr><tr><td class="meta-label">Date of Submission</td><td class="meta-val">November 24, 2026</td></tr><tr><td class="meta-label">Protocol Standard</td><td class="meta-val">Model Context Protocol (MCP) v2024-11-05, JSON-RPC 2.0 (stdio)</td></tr></table></div><h2>1. Executive Summary &amp; Problem Formulation</h2><p>As Large Language Models transition into agentic assistants, connecting them to external enterprise resources, local filesystems, and databases has become paramount. Historically, every AI provider developed proprietary function calling schemas, custom webhook APIs, and ad-hoc plugin formats. This created severe ecosystem fragmentation and high integration friction.</p><p>The Model Context Protocol (MCP), open-sourced by Anthropic, addresses this challenge by establishing an open, universal, and bidirectional standard connecting AI models (Clients) with external execution environments and data repositories (Servers). This assignment designs, implements, and validates an enterprise MCP Server for AI assistants over standard I/O (stdio) using JSON-RPC 2.0 protocol specifications.</p><h2>2. Model Context Protocol (MCP) Architectural Specification</h2><h3>2.1 Client-Server Topology &amp; Transport Primitives</h3><p>MCP utilizes a decoupled Client-Server architecture. The host application (such as Claude Desktop, Antigravity, or an IDE) operates as the MCP Client, while local or remote microservices act as MCP Servers. Communication occurs over standard streams (stdio) for local isolation or Server-Sent Events (SSE) for remote networks.</p><p>All message payloads adhere strictly to JSON-RPC 2.0 specifications:</p><pre><code>{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;tools/call&quot;, &quot;params&quot;: {&quot;name&quot;: &quot;query_database&quot;, &quot;arguments&quot;: {&quot;query&quot;: &quot;SELECT * FROM metrics&quot;}}}</code></pre><h3>2.2 The Three MCP Core Primitives</h3><li><strong>1. Tools (Active Execution):</strong> Dynamic executable functions that can be invoked by the model. Each tool defines a strict JSON Schema for input validation and returns structured content arrays.</li><li><strong>2. Resources (Passive Context):</strong> Passive, readable contextual endpoints addressed by custom URI schemes (e.g. assistant://system_config). Resources supply live data to models without executing code.</li><li><strong>3. Prompts (Guided Interaction):</strong> Pre-parameterized prompt templates provided by the server to guide user workflows and standardize assistant interactions.</li><h2>3. MCP Server Implementation Architecture</h2><p>Our implemented MCP server exposes a robust suite of tools, resources, and prompts designed for an enterprise data assistant:</p><div class="table-container"><table><thead><tr><th>Primitive Type</th><th>Identifier / URI</th><th>Input Parameters / Format</th><th>Functional Capability</th></tr></thead><tbody><tr><td>Tool</td><td>query_database</td><td>query (string, SQL)</td><td>Executes safe read-only SQL queries against SQLite database</td></tr><tr><td>Tool</td><td>calculate_financial_metrics</td><td>metric_type, revenue, expenses</td><td>High-precision financial calculations (CAGR, ROI, Margin)</td></tr><tr><td>Tool</td><td>search_assistant_docs</td><td>query (string)</td><td>Keyword &amp; SOP search over enterprise documentation</td></tr><tr><td>Tool</td><td>system_health_check</td><td>none</td><td>Live hardware telemetry (CPU, RAM, Disk, OS, Uptime)</td></tr><tr><td>Resource</td><td>assistant://system_config</td><td>application/json</td><td>System parameters, token limits, and operational rules</td></tr><tr><td>Resource</td><td>assistant://database_schema</td><td>text/plain</td><td>Live introspection of relational database schema and tables</td></tr><tr><td>Resource</td><td>assistant://audit_logs</td><td>application/json</td><td>Immutable audit trail of assistant tool calls</td></tr><tr><td>Prompt</td><td>financial_analysis_prompt</td><td>department (string)</td><td>Executive briefing template for quarterly financial analysis</td></tr><tr><td>Prompt</td><td>system_diagnostic_prompt</td><td>none</td><td>System health diagnostic prompt template</td></tr></tbody></table></div><h2>4. Protocol Lifecycle &amp; Verification Walkthrough</h2><p>We developed an automated Python verification client (`mcp_client_test.py`) that executes the complete protocol lifecycle over stdio pipes:</p><li><strong>Phase 1 - Initialization Handshake:</strong> Client initiates handshake with &#x27;initialize&#x27; request; server returns capabilities and serverInfo; client acknowledges with &#x27;notifications/initialized&#x27;.</li><li><strong>Phase 2 - Tool Discovery:</strong> Client invokes &#x27;tools/list&#x27;, validating schema compliance against JSON-RPC 2.0 standards.</li><li><strong>Phase 3 - Tool Execution:</strong> Client executes &#x27;tools/call&#x27; with arguments; server evaluates SQL, enforces safety restrictions, and returns structured text payloads.</li><li><strong>Phase 4 - Resource Introspection:</strong> Client reads &#x27;resources/read&#x27; with target URIs; server returns formatted metadata and payloads.</li><li><strong>Phase 5 - Prompt Templating:</strong> Client fetches &#x27;prompts/get&#x27;, verifying argument substitution and message structure.</li><h2>5. Test Execution Results &amp; Protocol Compliance</h2><p>All verification tests passed with 100% compliance against MCP standard v2024-11-05. Below is the test verification summary:</p><div class="table-container"><table><thead><tr><th>Test ID</th><th>Method Tested</th><th>Target Identifier</th><th>Expected Payload</th><th>Verification Status</th></tr></thead><tbody><tr><td>TC-01</td><td>initialize</td><td>enterprise-assistant-mcp</td><td>protocolVersion: 2024-11-05</td><td>PASSED</td></tr><tr><td>TC-02</td><td>tools/list</td><td>All Tools</td><td>4 tools registered with JSON Schema</td><td>PASSED</td></tr><tr><td>TC-03</td><td>tools/call</td><td>query_database</td><td>Returned 2 rows for Cloud AI metrics</td><td>PASSED</td></tr><tr><td>TC-04</td><td>tools/call</td><td>calculate_financial_metrics</td><td>Computed CAGR = 25.52%</td><td>PASSED</td></tr><tr><td>TC-05</td><td>tools/call</td><td>system_health_check</td><td>Status: HEALTHY, CPU &lt; 15%</td><td>PASSED</td></tr><tr><td>TC-06</td><td>resources/list</td><td>All Resources</td><td>3 resources registered with URIs</td><td>PASSED</td></tr><tr><td>TC-07</td><td>resources/read</td><td>assistant://system_config</td><td>Returned JSON configuration payload</td><td>PASSED</td></tr><tr><td>TC-08</td><td>prompts/list</td><td>All Prompts</td><td>2 parameterized templates</td><td>PASSED</td></tr><tr><td>TC-09</td><td>prompts/get</td><td>financial_analysis_prompt</td><td>Returned templated user message</td><td>PASSED</td></tr></tbody></table></div><h2>6. Security &amp; Sandboxing Principles</h2><p>Exposing local capabilities to AI models requires strict security boundaries:</p><li><strong>SQL Injection &amp; Mutation Guard:</strong> The database tool rejects any statement containing DROP, DELETE, INSERT, UPDATE, or ALTER, ensuring data immutability.</li><li><strong>Append-Only Audit Trail:</strong> All tool executions and administrative queries are persisted to an append-only SQLite audit log with ISO timestamps.</li><li><strong>Process Isolation:</strong> The server communicates exclusively via stdio pipes, preventing unauthorized external network listeners.</li><h2>7. Conclusion</h2><p>Assignment 3 successfully implemented a production-grade Model Context Protocol (MCP) server for AI assistants. Adhering strictly to MCP v2024-11-05, the server provides secure tools, contextual resources, and prompt templates, establishing a standardized bridge between foundation models and enterprise compute.</p>
+</div>
+</body>
+</html>
