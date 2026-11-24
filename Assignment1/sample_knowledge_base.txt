@@ -1,0 +1,48 @@
+================================================================================
+TECHNICAL SPECIFICATION: NEURAL RETRIEVAL & FOUNDATION MODELS WHITE PAPER
+Document ID: TR-2026-NLP-01 | Classification: Academic Reference | Version: 3.2
+================================================================================
+
+1. INTRODUCTION TO TRANSFORMER ARCHITECTURES
+The Transformer architecture, introduced by Vaswani et al. in 2017, relies entirely on self-attention mechanisms to compute representations of its input and output without using sequence-aligned RNNs or convolution. The core mechanism is Scaled Dot-Product Attention:
+    Attention(Q, K, V) = softmax((Q * K^T) / sqrt(d_k)) * V
+where Q, K, and V denote the Query, Key, and Value matrices, and d_k is the dimensionality of the keys. Multi-Head Attention allows the model to jointly attend to information from different representation subspaces at different positions.
+
+2. FOUNDATION LANGUAGE MODELS AND PARAMETRIC BOTTLENECKS
+Large Language Models (LLMs) such as GPT-4, Gemini 1.5, and Llama 3 are trained on vast web-scale corpora. However, they suffer from three fundamental limitations:
+a) Knowledge Cutoff: Parametric memory is static and reflects only the training dataset timestamp.
+b) Hallucination: When queried about low-resource, specialized, or private enterprise domains, LLMs often fabricate plausible-sounding but factually false claims.
+c) Provenance and Verification: Standard autoregressive generation does not natively provide direct citations or traceable evidence for its claims.
+
+3. RETRIEVAL-AUGMENTED GENERATION (RAG) PARADIGM
+Retrieval-Augmented Generation (Lewis et al., 2020) combines a pre-trained parametric generator (LLM) with a non-parametric retrieval index (dense vector database). In a standard RAG framework:
+- Ingestion: Unstructured documents are parsed, divided into semantic chunks (e.g., 250 to 500 tokens with 10% to 20% overlap), and mapped into dense vector space using an embedding model f_theta(text).
+- Vector Storage: High-dimensional embeddings (e.g., 384 dimensions for all-MiniLM-L6-v2, 1536 for text-embedding-3-small) are indexed using Approximate Nearest Neighbor (ANN) indices like FAISS (Facebook AI Similarity Search) or ChromaDB.
+- Retrieval: An incoming user prompt Q is embedded into the same semantic space. A cosine similarity or inner product metric identifies the top-k most relevant chunks.
+- Synthesis: The retrieved chunks D_1, D_2, ..., D_k are assembled into an augmented system prompt. The generator produces an evidence-grounded response conditioned strictly on the retrieved context.
+
+4. CHUNKING STRATEGIES AND EMPIRICAL TRADE-OFFS
+Chunking significantly impacts retrieval precision and generation faithfulness:
+- Fixed-size Chunking: Divides text strictly by token or character count with a sliding window. Simple and fast, but can split sentences or semantic ideas across chunks.
+- Semantic Chunking: Analyzes semantic distance between consecutive sentences and places split boundaries where embedding distance exceeds a threshold.
+- Sentence-Window Retrieval: Retrieves isolated sentences for precise similarity matching, but expands context to neighboring sentences (window size = 3) when passing to the LLM.
+
+5. VECTOR SIMILARITY METRICS AND FAISS INDEXING
+Vector similarity is computed using:
+- Cosine Similarity: cos(u, v) = (u . v) / (||u|| * ||v||)
+When vectors are L2-normalized (||u|| = 1), cosine similarity is mathematically equivalent to the Dot Product (Inner Product).
+FAISS provides several indexing structures:
+- IndexFlatIP: Exact brute-force inner product search. Highest recall (100%), but O(N) search time complexity.
+- IndexIVFFlat: Inverted File Index with Voronoi cells. Accelerates retrieval for large-scale datasets (> 100,000 vectors) with slight recall trade-off.
+- IndexHNSW: Hierarchical Navigable Small World graph. Fast logarithmic query time with high recall, ideal for real-time production systems.
+
+6. EVALUATION METRICS FOR RAG SYSTEMS (RAGAS FRAMEWORK)
+Rigorous evaluation of RAG systems separates retrieval quality from generation quality:
+1. Context Precision: Signal-to-noise ratio in retrieved context chunks.
+2. Context Recall: Whether all relevant ground-truth facts were retrieved.
+3. Faithfulness: Degree to which the generated answer can be inferred purely from the provided context (absence of hallucinations).
+4. Answer Relevance: How directly the response addresses the user query.
+
+================================================================================
+END OF SPECIFICATION DOCUMENT
+================================================================================
